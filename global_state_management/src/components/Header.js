@@ -3,15 +3,18 @@ import SwitchToDarkIcon from "../images/icon-moon.svg";
 import SwitchToLightIcon from "../images/icon-sun.svg";
 import store from "../todoStore";
 
-const Header = ({ isDarkMode, setIsDarkMode }) => {
-  
+// const Header = ({ isDarkMode, setIsDarkMode }) => {
+const Header = () => {
+  // here isDarkMode is not required by porp as we can directly read it from global store
+  const isDarkMode = store.getState().isDarkMode;
+
   const getThemeIcon = (isDarkMode) => {
     return isDarkMode ? SwitchToLightIcon : SwitchToDarkIcon;
-  }
+  };
   let themeIcon = getThemeIcon(isDarkMode);
 
   const changeTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    // setIsDarkMode(!isDarkMode);
   };
 
   return (
