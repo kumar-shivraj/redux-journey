@@ -20,7 +20,10 @@ const Header = () => {
   return (
     <header>
       <h1>TODO</h1>
-      <button className="btn" onClick={changeTheme}>
+      <button
+        className="btn"
+        // onClick={changeTheme}
+      >
         <img id="themeIcon" src={themeIcon} alt="Dark Theme" />
       </button>
     </header>

@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import TodoListItem from "./TodoListItem";
 import TodoMenu from "./TodoMenu";
+import store from "../todoStore";
 
-const TodoList = ({ todos, isDarkMode }) => {
-  const [filteredTodos, setFilteredTodos] = useState([])
+// const TodoList = ({ todos, isDarkMode }) => {
+const TodoList = ({ todos }) => {
+  const isDarkMode = store.getState().isDarkMode;
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
     const handleFilterTodos = (todos, filterStatus) => {
       switch (filterStatus) {
         case "active":
           setFilteredTodos(todos.filter((todo) => !todo.completed));
-          break
+          break;
         case "completed":
           setFilteredTodos(todos.filter((todo) => todo.completed));
-          break  
+          break;
         default:
-          setFilteredTodos(todos)
-          break
+          setFilteredTodos(todos);
+          break;
       }
     };
 
-    handleFilterTodos(todos, "all")
-  }, [])
+    handleFilterTodos(todos, "all");
+  }, []);
 
   return (
     <>
@@ -35,11 +38,7 @@ const TodoList = ({ todos, isDarkMode }) => {
         ) : (
           <ul className="todo-list">
             {filteredTodos.map((todo, i) => (
-              <TodoListItem
-                todo={todo}
-                key={todo.id}
-                todos={todos}
-              />
+              <TodoListItem todo={todo} key={todo.id} todos={todos} />
             ))}
           </ul>
         )}

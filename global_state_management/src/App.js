@@ -16,11 +16,13 @@ export default function App() {
     <div className={`wrapper ${themeClass}`}>
       <div className="container">
         <Header
-          isDarkMode={isDarkMode}
-          // setIsDarkMode={setIsDarkMode}
+        // isDarkMode={isDarkMode}
+        // setIsDarkMode={setIsDarkMode}
         />
         <main>
-          <TodoWrapper isDarkMode={isDarkMode} />
+          <TodoWrapper
+          // isDarkMode={isDarkMode}
+          />
         </main>
       </div>
     </div>
