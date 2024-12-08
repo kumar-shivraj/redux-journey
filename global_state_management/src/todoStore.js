@@ -6,6 +6,12 @@ const INITIAL_STATE = {
   isDarkMode: false,
 };
 
-const todoStore = createStore(INITIAL_STATE);
+function handler(state) {
+  console.log("Old state : ", state);
+  state.isDarkMode = !state.isDarkMode;
+  console.log("New state : ", state);
+}
+
+const todoStore = createStore(INITIAL_STATE, handler);
 
 export default todoStore;

@@ -3,14 +3,23 @@
 //  It required context about your application with the help of parameters
 //  I DO NOT HAVE THE ABILITY TO POLUTE THE STORE AS A APPLICATION DEVELOPER
 
-const createStore = (initialState) => {
+//  handler   --->   A function that holds the logic to updating the store/state.
+// const createStore = (initialState) => {
+const createStore = (initialState, handler) => {
   const state = initialState;
   const getState = () => {
     return state;
   };
 
+  const dispatch = () => {
+    console.log("Invoked dispatch");
+    // going to update the state, "not really"
+    handler(state); // this will now update the state
+  };
+
   return {
     getState,
+    dispatch,
   };
 };
 

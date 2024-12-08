@@ -15,15 +15,15 @@ const Header = () => {
 
   const changeTheme = () => {
     // setIsDarkMode(!isDarkMode);
+
+    // Dispatch the function
+    store.dispatch();
   };
 
   return (
     <header>
       <h1>TODO</h1>
-      <button
-        className="btn"
-        // onClick={changeTheme}
-      >
+      <button className="btn" onClick={changeTheme}>
         <img id="themeIcon" src={themeIcon} alt="Dark Theme" />
       </button>
     </header>
