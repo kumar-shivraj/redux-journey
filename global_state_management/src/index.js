@@ -142,4 +142,30 @@ root.render(
               *   We don't need to call createStore in every file where you import the store. It’s already been created once and shared across your app.
               *   This is a fundamental aspect of how the ES6 module system works: modules are cached after their first evaluation, 
                   so all imports refer to the same instance of the module.
+      
+      *   Global State Management : 4th Essential Aspect of State Management: Way to get updated state : subscribing
+            * Why : When we update the global state maintained in store, it doesn't render the component with the latest state.
+                    It doesn't act like a state(changing the state resulting in component re-render), instead it acts like a normal variable.
+                    That's the reason, we need to have somme sort of subscription so that whenever there is change in the global state, we need to
+                    re-render the component
+          
+          Approach 1 :  Maintaining the local State to force a re-render
+                    We can maintain the local state for the component, and when the global state is updated, we can update the local state
+                      And the component will re-render because the local state is updated. So the component will re-render whenever the global state is updated.
+
+                      This will solve our problem of component not re-rendering when the global state is updated.
+                      But, this is not the right way to do it because :
+                        In case of big application, we will create a lot of local state which will cause issue in the performance.
+                        It will problem in scalibility.
+          
+          Approach 2 : Directly updating the DOM
+                    We can directly update the DOM whenever the global state is updated.
+                
+            Problem :   * We don't want to touch the DOM to update it. Here we are one image only, but what if we are having 100 dynamic elements.
+                        * This change will be limited to the component that is directly related to the state(header in this case).
+                         But other components will not be affected in case they are using the same state.
+
+
+            
+
 */

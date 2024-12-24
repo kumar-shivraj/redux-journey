@@ -7,18 +7,21 @@ import store from "../todoStore";
 /*
   HACKY!
 
-  Approach 1 : Maintaining the local State :
+  Approach 1 : Maintaining the local State : to force a re-render :
   As we know that when local state is getting updated, the component is going to re-render.
+
+  Approach 2 : Directly updating the DOM :
+    After dispatching the action, we can directly update the DOM.
 
 */
 // const Header = ({ isDarkMode, setIsDarkMode }) => {
 const Header = () => {
   // here isDarkMode is not required by porp as we can directly read it from global store
   const isDarkMode = store.getState().isDarkMode;
-  console.log("isDarkMode inside Header : ", isDarkMode);
+  // console.log("isDarkMode inside Header : ", isDarkMode);
 
   //  maintaining the local state in order to keep the component in sync with the global state
-  const [localIsDarkMode, setLocalIsDarkMode] = useState(isDarkMode);
+  // const [localIsDarkMode, setLocalIsDarkMode] = useState(isDarkMode);
 
   const getThemeIcon = (isDarkMode) => {
     return isDarkMode ? SwitchToLightIcon : SwitchToDarkIcon;
@@ -33,7 +36,13 @@ const Header = () => {
 
     // after dispatch, the store will be updated. So we can take the latest state from the store and update the local state
     // store will return the new value of the state
-    setLocalIsDarkMode(store.getState().isDarkMode);
+    // setLocalIsDarkMode(store.getState().isDarkMode);
+
+    //  updating the DOM directly
+    const $imageElement = document.getElementById("themeIcon");
+    // $imageElement.src = getThemeIcon(store.getState().isDarkMode);
+    const newIsDarkMode = store.getState().isDarkMode;
+    $imageElement.src = getThemeIcon(newIsDarkMode);
   };
 
   return (
