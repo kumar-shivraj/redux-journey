@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import store from "../todoStore";
 
 let statuses = [
@@ -10,7 +9,10 @@ let statuses = [
 
 const TodoFilterControl = () => {
   // let filterStatus = "all";
-  const filterStatus = store.getState().filterStatus;
+  //   const filterStatus = store.getState().filterStatus;
+  const [localFilterStatus, setLocalFilterStatus] = useState(
+    store.getState().filterStatus
+  );
 
   const handleThemeChange = (newStatus) => {
     // store.dispatch("CHANGE_FILTER_STATUS");
@@ -25,13 +27,20 @@ const TodoFilterControl = () => {
       },
     });
   };
+
+  useEffect(() => {
+    store.subscribe(() => {
+      setLocalFilterStatus(store.getState().filterStatus);
+    });
+  }, []);
   return (
     <div className="control-btn group">
       {statuses.map((status, idx) => {
         return (
           <button
             id={status.id}
-            className={filterStatus === status.id ? "btn active" : "btn"}
+            // className={filterStatus === status.id ? "btn active" : "btn"}
+            className={localFilterStatus === status.id ? "btn active" : "btn"}
             key={idx}
             onClick={() => handleThemeChange(status.id)}
           >

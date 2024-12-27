@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")).render(
 );
 
 /*
-###     To maintain the multiple state in with global state management we need to consider below points
+###     To maintain and update the multiple state in with global state management we need to consider below points
 *   We'll call the dispatch by passing the object(action) as argument instead of passing without any arguments.
     *   This object will be having two things : 
         i. type : this is type of action which decides what to do with the state
