@@ -20,7 +20,12 @@ const Header = () => {
 
   const changeTheme = () => {
     // setIsDarkMode(!isDarkMode);
-    store.dispatch();
+    // store.dispatch();
+    // store.dispatch("TOGGLE_DARK_MODE");
+
+    store.dispatch({
+      type: "TOGGLE_DARK_MODE",
+    });
   };
 
   return (
