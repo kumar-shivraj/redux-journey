@@ -45,6 +45,17 @@ const Header = () => {
     $imageElement.src = getThemeIcon(newIsDarkMode);
   };
 
+  useEffect(() => {
+    //  subscribing to the store
+    //  pushing the callback to the subscribers array
+    //  F1
+    store.subscribe(() => {
+      const $imageElement = document.getElementById("themeIcon");
+      const newIsDarkMode = store.getState().isDarkMode;
+      $imageElement.src = getThemeIcon(newIsDarkMode);
+    });
+  }, []);
+
   return (
     <header>
       <h1>TODO</h1>
