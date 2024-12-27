@@ -1,0 +1,9 @@
+.child-counter-one-wrapper {
+  background-color: #4343a8;
+  padding: 25px;
+}
+.child-counter-one-container {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
