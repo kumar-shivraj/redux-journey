@@ -1,13 +1,14 @@
 import GrandChildCounter3 from "../GrandChildCounter3";
 import GrandChildCounter4 from "../GrandChildCounter4";
 import "./ChildCounter2.css";
-const ChildCounter2 = ({ count, setCount }) => {
+// eslint-disable-next-line react/prop-types
+const ChildCounter2 = ({ isDarkMode }) => {
   return (
     <div className="child-counter-two-wrapper">
       <h2>ChildCounter2</h2>
       <div className="child-counter-two-container">
-        <GrandChildCounter3 />
-        <GrandChildCounter4 count={count} setCount={setCount} />
+        <GrandChildCounter3 isDarkMode={isDarkMode} />
+        <GrandChildCounter4 />
       </div>
     </div>
   );

@@ -2,4 +2,9 @@
   background-color: #7729b7;
   padding: 25px;
   border-radius: 16px;
+  transition: all 1s ease-out;
+}
+
+.grand-child-counter-three-wrapper-dark {
+  background-color: #984f49f5;
 }
