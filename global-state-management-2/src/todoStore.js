@@ -21,10 +21,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "TOGGLE_DARK_MODE":
       state.isDarkMode = !state.isDarkMode;
-      break;
+      // break;
+      return state; //  this is modified state
     case "CHANGE_FILTER_STATUS":
       state.filterStatus = action.payload.filterStatus;
-      break;
+      // break;
+      return state;
     default:
       return state;
   }
@@ -32,4 +34,37 @@ const reducer = (state, action) => {
 // const store = createStore(initialState, toggleDarkMode);
 const store = createStore(initialState, reducer);
 
+// ===========================================================================
+// Test : Act, Assert, Expect
+
+const tempInitialState = {
+  isDarkMode: false,
+  filterStatus: "active",
+};
+
+const tempStore = createStore(tempInitialState, reducer);
+
+let action = { type: "TOGGLE_DARK_MODE" };
+
+//  this is expectation
+let expected = { isDarkMode: true, filterStatus: "active" };
+// let actual = tempStore.getState();
+// let actual = reducer(tempStore.getState(), action);
+let actual = reducer(tempInitialState, action); //  This is called the ACT. {isDarkMode: false, ......}
+
+//  This is called the ASSERT / Assertion
+if (JSON.stringify(expected) != JSON.stringify(actual)) {
+  //  expectation was to receive an object, but returned from the reducer was undefined
+  throw `Expected: ${expected} but received ${actual}`;
+} else {
+  console.log("Test passed for TOGGLE_DARK_MODE");
+}
+// ===========================================================================
+
 export default store;
+
+/*
+  Hypothesis : If our reducer is actually "impure", now if I try to write  a test for it, then that test should fail
+
+
+*/

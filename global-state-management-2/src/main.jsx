@@ -26,3 +26,40 @@ createRoot(document.getElementById("root")).render(
 
 
 */
+
+/*
+  //  pure function
+  function add(a, b) {
+    return a + b
+  }
+
+  line 37 : add(1, 2) => 3
+
+  line 45 : add(1, 2) => 3
+
+  ...
+
+  add(1, 2) => 3
+  add(1, 2) => 3
+
+  Characteristics :
+  1.  Deterministic
+  2.  No Side effects
+
+
+  addComplex(a, b) {
+    //  complex math operation
+    return a + b
+  }
+
+
+
+  const someCachedValue = addComplex(7, 17) =>  //  24
+
+  Secondary Benefits :
+  1.  I can write tests for it("expect" your function to behave in a certain manner --> "assertion")
+  2.  Parallelization / Concurrency =>  Performance improvements
+  3.  We can cache/memoize the result
+
+
+*/
