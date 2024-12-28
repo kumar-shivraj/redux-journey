@@ -1,5 +1,8 @@
+import counterStore from "../../../counterStore";
 import "./GrandChildCounter2.css";
-const GrandChildCounter2 = ({ isDarkMode }) => {
+// const GrandChildCounter2 = ({ isDarkMode }) => {
+const GrandChildCounter2 = () => {
+  const isDarkMode = counterStore.getState().isDarkMode;
   return (
     <div
       className={`grand-child-counter-two-wrapper ${

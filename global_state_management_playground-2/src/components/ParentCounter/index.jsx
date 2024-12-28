@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import ChildCounter1 from "../ChildCounter1";
 import ChildCounter2 from "../ChildCounter2";
 import counterStore from "../../../counterStore";
@@ -11,7 +11,8 @@ const ParentCounter = () => {
   // const setCount = counterStore.getState().setCount;
 
   // const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = counterStore.getState().isDarkMode;
 
   return (
     <div
@@ -27,7 +28,7 @@ const ParentCounter = () => {
             isDarkMode ? "dark-mode-button" : "light-mode-button"
           }`}
           onClick={() => {
-            setIsDarkMode(!isDarkMode);
+            // setIsDarkMode(!isDarkMode);
           }}
         >
           {/* <img src={isDarkMode ? SwitchToDarkIcon : SwitchToLightIcon} alt="" /> */}
@@ -38,9 +39,11 @@ const ParentCounter = () => {
         {/* <ChildCounter1 count={count} setCount={setCount} /> */}
         {/* <ChildCounter2 count={count} setCount={setCount} /> */}
         {/* <ChildCounter1 /> */}
-        <ChildCounter1 isDarkMode={isDarkMode} />
+        {/* <ChildCounter1 isDarkMode={isDarkMode} /> */}
+        <ChildCounter1 />
         {/* <ChildCounter2 count={count} /> */}
-        <ChildCounter2 isDarkMode={isDarkMode} />
+        {/* <ChildCounter2 isDarkMode={isDarkMode} /> */}
+        <ChildCounter2 />
       </div>
     </div>
   );

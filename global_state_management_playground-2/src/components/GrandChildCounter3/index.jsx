@@ -1,6 +1,9 @@
+import counterStore from "../../../counterStore";
 import "./GrandChildCounter3.css";
 // eslint-disable-next-line react/prop-types
-const GrandChildCounter3 = ({ isDarkMode }) => {
+// const GrandChildCounter3 = ({ isDarkMode }) => {
+const GrandChildCounter3 = () => {
+  const isDarkMode = counterStore.getState().isDarkMode;
   return (
     <div
       className={`grand-child-counter-three-wrapper ${
