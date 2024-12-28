@@ -14,6 +14,13 @@ const ParentCounter = () => {
   // const [isDarkMode, setIsDarkMode] = useState(false);
   const isDarkMode = counterStore.getState().isDarkMode;
 
+  const handleThemeChange = () => {
+    counterStore.dispatch({
+      type: "TOGGLE_DARK_MODE",
+      payload: !isDarkMode,
+    });
+  };
+
   return (
     <div
       className={`parent-counter-wrapper ${
@@ -27,9 +34,10 @@ const ParentCounter = () => {
           className={`toggle-dark-mode-button ${
             isDarkMode ? "dark-mode-button" : "light-mode-button"
           }`}
-          onClick={() => {
-            // setIsDarkMode(!isDarkMode);
-          }}
+          // onClick={() => {
+          //   // setIsDarkMode(!isDarkMode);
+          // }}
+          onClick={handleThemeChange}
         >
           {/* <img src={isDarkMode ? SwitchToDarkIcon : SwitchToLightIcon} alt="" /> */}
           {isDarkMode ? <IconMoon /> : <IconSun />}

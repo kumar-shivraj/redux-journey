@@ -23,13 +23,27 @@ const GrandChildCounter4 = () => {
   //   console.log("localCount : ", localCount);
   // };
 
-  const handleIncrement = () => {
-    counterStore.dispatch();
+  // const handleIncrement = () => {
+  //   counterStore.dispatch();
 
-    const counterElement = document.querySelector(
-      ".grand-child-counter-four-wrapper .counter"
-    );
-    counterElement.innerText = `Count : ${counterStore.getState().count}`;
+  //   const counterElement = document.querySelector(
+  //     ".grand-child-counter-four-wrapper .counter"
+  //   );
+  //   counterElement.innerText = `Count : ${counterStore.getState().count}`;
+  // };
+
+  const handleIncrement = () => {
+    counterStore.dispatch({
+      type: "INCREMENT",
+      payload: 10,
+    });
+  };
+
+  const handleDecrement = () => {
+    counterStore.dispatch({
+      type: "DECREMENT",
+      payload: 10,
+    });
   };
 
   useEffect(() => {
@@ -47,8 +61,9 @@ const GrandChildCounter4 = () => {
       {/* <button onClick={() => setCount(count - 1)}>-</button>
       <button onClick={() => setCount(count + 1)}>+</button> */}
 
-      <button onClick={() => {}}>-</button>
-      <button onClick={handleIncrement}>+</button>
+      {/* <button onClick={() => {}}>-</button> */}
+      <button onClick={handleDecrement}>-10</button>
+      <button onClick={handleIncrement}>+10</button>
     </div>
   );
 };
