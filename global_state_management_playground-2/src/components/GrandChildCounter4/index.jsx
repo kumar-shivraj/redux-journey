@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import counterStore from "../../../counterStore";
 import "./GrandChildCounter4.css";
@@ -8,6 +8,8 @@ const GrandChildCounter4 = () => {
   const count = counterStore.getState().count;
   //  creating the localState to force render when count is changed
   // const [localCount, setLocalCount] = useState(10);
+  // eslint-disable-next-line no-unused-vars
+  const [localCount, setLocalCount] = useState(counterStore.getState().count);
 
   /**
    * Increment the count in the global store and update the local state.
@@ -37,6 +39,9 @@ const GrandChildCounter4 = () => {
       type: "INCREMENT",
       payload: 10,
     });
+
+    //   updating the localState
+    setLocalCount(counterStore.getState().count);
   };
 
   const handleDecrement = () => {
@@ -44,16 +49,19 @@ const GrandChildCounter4 = () => {
       type: "DECREMENT",
       payload: 10,
     });
+
+    //   updating the localState
+    setLocalCount(counterStore.getState().count);
   };
 
-  useEffect(() => {
-    counterStore.subscribe(() => {
-      const counterElement = document.querySelector(
-        ".grand-child-counter-four-wrapper .counter"
-      );
-      counterElement.innerText = `Count : ${counterStore.getState().count}`;
-    });
-  });
+  // useEffect(() => {
+  //   counterStore.subscribe(() => {
+  //     const counterElement = document.querySelector(
+  //       ".grand-child-counter-four-wrapper .counter"
+  //     );
+  //     counterElement.innerText = `Count : ${counterStore.getState().count}`;
+  //   });
+  // }, []);
   return (
     <div className="grand-child-counter-four-wrapper">
       <h3>GrandChildCounter4</h3>

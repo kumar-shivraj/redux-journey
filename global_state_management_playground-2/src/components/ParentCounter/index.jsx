@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import ChildCounter1 from "../ChildCounter1";
 import ChildCounter2 from "../ChildCounter2";
 import counterStore from "../../../counterStore";
@@ -13,12 +13,17 @@ const ParentCounter = () => {
   // const [isDarkMode, setIsDarkMode] = useState(true);
   // const [isDarkMode, setIsDarkMode] = useState(false);
   const isDarkMode = counterStore.getState().isDarkMode;
+  // eslint-disable-next-line no-unused-vars
+  const [localIsDarkMode, setLocalIsDarkMode] = useState(
+    counterStore.getState().isDarkMode
+  );
 
   const handleThemeChange = () => {
     counterStore.dispatch({
       type: "TOGGLE_DARK_MODE",
       payload: !isDarkMode,
     });
+    setLocalIsDarkMode(counterStore.getState().isDarkMode);
   };
 
   return (

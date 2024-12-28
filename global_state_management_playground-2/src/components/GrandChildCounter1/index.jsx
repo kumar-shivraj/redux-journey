@@ -1,10 +1,12 @@
-// import { useState } from "react";
+import { useState } from "react";
 import counterStore from "../../../counterStore";
 import "./GrandChildCounter1.css";
 // const GrandChildCounter1 = ({ count, setCount }) => {
 const GrandChildCounter1 = () => {
   // const [count, setCount] = useState(0);
   const count = counterStore.getState().count;
+  // eslint-disable-next-line no-unused-vars
+  const [localCount, setLocalCount] = useState(0);
   // const [localCount, setLocalCount] = useState(0);
 
   // const handleIncrement = () => {
@@ -21,6 +23,9 @@ const GrandChildCounter1 = () => {
       type: "INCREMENT",
       payload: 1,
     });
+
+    //  updating the localState
+    setLocalCount(counterStore.getState().count);
   };
 
   const handleDecrement = () => {
@@ -29,6 +34,9 @@ const GrandChildCounter1 = () => {
       type: "DECREMENT",
       payload: 1,
     });
+
+    //  updating the localState
+    setLocalCount(counterStore.getState().count);
   };
 
   return (
