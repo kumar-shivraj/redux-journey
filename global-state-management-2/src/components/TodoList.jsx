@@ -3,32 +3,48 @@ import TodoListItem from "./TodoListItem";
 import TodoMenu from "./TodoMenu";
 import store from "../todoStore";
 
-import data from "../data/initialTodos"
+import data from "../data/initialTodos";
 
-const TodoList = ({ /*isDarkMode*/ }) => {
-  const [filteredTodos, setFilteredTodos] = useState([])
+const TodoList = (
+  {
+    /*isDarkMode*/
+  }
+) => {
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   const [todos, setTodos] = useState(data);
 
   const isDarkMode = store.getState().isDarkMode;
+
+  const [localFilterStatus, setLocalFilterStatus] = useState(
+    store.getState().filterStatus
+  );
 
   useEffect(() => {
     const handleFilterTodos = (todos, filterStatus) => {
       switch (filterStatus) {
         case "active":
           setFilteredTodos(todos.filter((todo) => !todo.completed));
-          break
+          break;
         case "completed":
           setFilteredTodos(todos.filter((todo) => todo.completed));
-          break  
+          break;
         default:
-          setFilteredTodos([...todos])
-          break
+          setFilteredTodos([...todos]);
+          break;
       }
     };
 
-    handleFilterTodos(todos, "all")
-  }, [])
+    // handleFilterTodos(todos, "all");
+    handleFilterTodos(todos, localFilterStatus);
+    // }, []);
+  }, [localFilterStatus]);
+
+  useEffect(() => {
+    store.subscribe(() => {
+      setLocalFilterStatus(store.getState().filterStatus);
+    });
+  }, []);
 
   return (
     <>
@@ -42,11 +58,7 @@ const TodoList = ({ /*isDarkMode*/ }) => {
         ) : (
           <ul className="todo-list">
             {filteredTodos.map((todo, i) => (
-              <TodoListItem
-                todo={todo}
-                key={todo.id}
-                todos={todos}
-              />
+              <TodoListItem todo={todo} key={todo.id} todos={todos} />
             ))}
           </ul>
         )}
