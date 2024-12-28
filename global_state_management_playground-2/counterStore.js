@@ -1,7 +1,8 @@
 import createStore from "./library/createStore";
 
 const initialState = {
-  count: 10,
+  count: 0,
+  isDarkMode: false,
 };
 
 const handleIncrement = (state) => {
