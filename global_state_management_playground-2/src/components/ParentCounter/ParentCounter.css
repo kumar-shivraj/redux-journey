@@ -1,0 +1,13 @@
+.parent-counter-wrapper {
+  background-color: #352332;
+  padding: 15px;
+  /* background-image: url("public/pics/bg-desktop-dark.jpg"); */
+  /* background-image: url("public/pics/bg-desktop-light.jpg"); */
+}
+.parent-counter-container {
+  width: max-content;
+  display: flex;
+  background-color: #43d975;
+  padding: 10px;
+  gap: 10px;
+}

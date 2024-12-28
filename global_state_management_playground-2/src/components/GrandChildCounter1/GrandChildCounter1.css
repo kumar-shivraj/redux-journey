@@ -1,0 +1,17 @@
+.grand-child-counter-one-wrapper {
+  background-color: #b33eab;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.counter {
+  background-color: green;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.grand-child-counter-one-wrapper button {
+  padding: 24px;
+  border-radius: 8px;
+  margin: 8px;
+}
