@@ -74,3 +74,25 @@ createRoot(document.getElementById("root")).render(
 
 
 */
+
+/*  
+
+There is a possibility that when we are trying to dispatch an action, I can make assumptions about what to paas to the object.
+
+
+Example : we want to store user's date
+for update the username, below is the object that we can pass during calling the dispatch function :
+{
+  type: "UPDATE_USERNAME",
+  userName: "newUserName"
+}
+
+Here we made the assumption for the structure of this object which is very common thing, but reducer will not accept this as reducer expects the object with two things : type and payload.
+
+
+Just like we added a consistency / uniformity in the action type to avoid silly mistakes,
+Same thing we will do for the action object in it's entirety.
+We'll create a function to create the action object : action creaters
+This function is known as "action creaters"
+
+*/

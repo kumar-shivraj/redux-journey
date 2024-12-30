@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import store, { CHANGE_FILTER_STATUS } from "../todoStore";
+// import store, { CHANGE_FILTER_STATUS, changeFilterStatus } from "../todoStore";
+import store, { changeFilterStatus } from "../todoStore";
 
 let statuses = [
   { id: "all", title: "All" },
@@ -20,14 +21,20 @@ const TodoFilterControl = () => {
     //  creating an action object
     //  payload is absolutely optional, if we need to paas some additional information then we paas it in payload
     //  payload can be anything : it can be number, string, boolean, object, etc....
-    store.dispatch({
+    /* store.dispatch({
       // type: "CHANGE_FILTER_STATUS",
       // type: "CHANGE_FILLER_STATUS",
       type: CHANGE_FILTER_STATUS,
-      payload: {
-        filterStatus: newStatus,
-      },
+      // payload: {
+      //   filterStatus: newStatus,
+      // },
+      // payload: newStatus,
+
+      filterStatus: newStatus,
     });
+
+    */
+    store.dispatch(changeFilterStatus(newStatus));
   };
 
   useEffect(() => {

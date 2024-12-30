@@ -3,6 +3,23 @@ import createStore from "./library/createStore";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
 export const CHANGE_FILTER_STATUS = "CHANGE_FILTER_STATUS";
 
+export function changeFilterStatus(newStatus) {
+  return {
+    type: CHANGE_FILTER_STATUS,
+    payload: newStatus,
+  };
+}
+
+export function toggleDarkMode() {
+  return {
+    type: TOGGLE_DARK_MODE,
+  };
+}
+
+// responsibility of creating an action object now lies with these above function
+// which we can now import in all our other components
+//  known as action creaters
+
 const initialState = {
   isDarkMode: false,
   filterStatus: "active",
@@ -63,7 +80,11 @@ const reducer = (state, action) => {
       // state.filterStatus = action.payload.filterStatus;
       return {
         ...state,
-        filterStatus: action.payload.filterStatus,
+        // filterStatus: action.payload.filterStatus,
+        // filterStatus: action.payload,
+
+        // filterStatus: action.filterStatus,
+        filterStatus: action.payload,
       };
     default:
       return state;
