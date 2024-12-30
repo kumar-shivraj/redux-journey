@@ -1,4 +1,5 @@
 import createStore from "./library/createStore";
+import combineReducers from "./library/combineReducers";
 
 /*  ACTION TYPES START  */
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
@@ -19,17 +20,56 @@ export function toggleDarkMode() {
   };
 }
 
-// responsibility of creating an action object now lies with these above function
-// which we can now import in all our other components
+//  responsibility of creating an action object now lies with these above function
+//  which we can now import in all our other components
 //  known as action creaters
 
 /*  ACTION TYPES END  */
 
+/*  PREFERENCES REDUCER  */
+function preferencesReducer(
+  state = {
+    isDarkMode: true,
+    // isDarkMode: false,
+  },
+  action
+) {
+  switch (action.type) {
+    case TOGGLE_DARK_MODE:
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode,
+      };
+    default:
+      return state;
+  }
+}
+
+/*  TODO REDUCER  */
+function todoReducer(
+  state = {
+    filterStatus: "active",
+  },
+  action
+) {
+  switch (action.type) {
+    case CHANGE_FILTER_STATUS:
+      return {
+        ...state,
+        filterStatus: action.payload,
+      };
+    default:
+      return state;
+  }
+}
+
+/*
 const initialState = {
   isDarkMode: false,
   filterStatus: "active",
   // filterStatus: "all",
 };
+*/
 
 // const toggleDarkMode = (state) => {
 //   // console.log(state.isDarkMode);
@@ -71,6 +111,7 @@ Reducer :
   should be reurn { ...state, isDarkMode: !state.isDarkMode } //  immutability
 */
 
+/*
 // const reducer = (state, action) => {
 const reducer = (
   state = {
@@ -104,10 +145,27 @@ const reducer = (
       return state;
   }
 };
+*/
 
 // const store = createStore(initialState, toggleDarkMode);
 // const store = createStore(initialState, reducer);
-const store = createStore(reducer);
+// const store = createStore(reducer);
+
+//  PROBLEM : How do we combine the two reducers to create a single reducer (only for the store)
+
+//  mapping : (map => hash map) : a key value pair
+
+//  this key is nothing but representing a "slice" of state
+const reducerMappings = {
+  preferencesReducer: preferencesReducer, //  slice for preferences
+  todoReducer: todoReducer, //  slice for todos
+};
+// console.log("Reducer Mappings : ", reducerMappings);
+
+//  combineReducer is returning a function named as combinedReducer
+//  combineReducer ==> function ==> combinedRedcer
+//  combinedReducer ==> function accept state and action : combinedReducer(state, action)
+const store = createStore(combineReducers(reducerMappings));
 
 /*
 // ===========================================================================

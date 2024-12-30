@@ -14,10 +14,12 @@ const TodoList = (
 
   const [todos, setTodos] = useState(data);
 
-  const isDarkMode = store.getState().isDarkMode;
+  // const isDarkMode = store.getState().isDarkMode;
+  const isDarkMode = store.getState().preferencesReducer.isDarkMode;
 
   const [localFilterStatus, setLocalFilterStatus] = useState(
-    store.getState().filterStatus
+    // store.getState().filterStatus
+    store.getState().todoReducer.filterStatus
   );
 
   useEffect(() => {
@@ -42,7 +44,8 @@ const TodoList = (
 
   useEffect(() => {
     store.subscribe(() => {
-      setLocalFilterStatus(store.getState().filterStatus);
+      // setLocalFilterStatus(store.getState().filterStatus);
+      setLocalFilterStatus(store.getState().todoReducer.filterStatus);
     });
   }, []);
 

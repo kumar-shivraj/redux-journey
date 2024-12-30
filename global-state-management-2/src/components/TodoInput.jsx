@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import store  from "../todoStore";
+import store from "../todoStore";
 
 const getCurrentDate = () => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(currentDate.getDate()).padStart(2, '0');
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  const day = String(currentDate.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
 
@@ -13,8 +13,9 @@ const TodoInput = (/*{ isDarkMode }*/) => {
   const [todoTitle, setTodoTitle] = useState("");
   const [dueDate, setDueDate] = useState(getCurrentDate());
 
-  const isDarkMode = store.getState().isDarkMode;
-  
+  // const isDarkMode = store.getState().isDarkMode;
+  const isDarkMode = store.getState().preferencesReducer.isDarkMode;
+
   const handleTodoTitleChange = (e) => {
     setTodoTitle(e.target.value);
   };

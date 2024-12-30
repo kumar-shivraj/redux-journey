@@ -12,7 +12,8 @@ const TodoFilterControl = () => {
   // let filterStatus = "all";
   //   const filterStatus = store.getState().filterStatus;
   const [localFilterStatus, setLocalFilterStatus] = useState(
-    store.getState().filterStatus
+    // store.getState().filterStatus
+    store.getState().todoReducer.filterStatus
   );
 
   const handleThemeChange = (newStatus) => {
@@ -39,7 +40,8 @@ const TodoFilterControl = () => {
 
   useEffect(() => {
     store.subscribe(() => {
-      setLocalFilterStatus(store.getState().filterStatus);
+      // setLocalFilterStatus(store.getState().filterStatus);
+      setLocalFilterStatus(store.getState().todoReducer.filterStatus);
     });
   }, []);
   return (

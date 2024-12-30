@@ -5,7 +5,8 @@ import SwitchToLightIcon from "../images/icon-sun.svg";
 import store, { toggleDarkMode } from "../todoStore";
 
 const Header = () => {
-  const isDarkMode = store.getState().isDarkMode;
+  // const isDarkMode = store.getState().isDarkMode;
+  const isDarkMode = store.getState().preferencesReducer.isDarkMode;
 
   const getThemeIcon = (isDarkMode) => {
     return isDarkMode ? SwitchToLightIcon : SwitchToDarkIcon;
@@ -14,7 +15,8 @@ const Header = () => {
 
   useEffect(() => {
     store.subscribe(() => {
-      let isDarkMode = store.getState().isDarkMode;
+      // let isDarkMode = store.getState().isDarkMode;
+      let isDarkMode = store.getState().preferencesReducer.isDarkMode;
       document.getElementById("themeIcon").src = getThemeIcon(isDarkMode);
     });
   }, []);
