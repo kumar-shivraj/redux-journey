@@ -96,3 +96,20 @@ We'll create a function to create the action object : action creaters
 This function is known as "action creaters"
 
 */
+
+/*
+
+Currentlty, the state is initialize in our application through the initialState object passed by todoStore.
+But as application grows, it is not good to initialize the state in the todoStore.
+
+Theme :
+  READIBILITY
+  UNIFORMITY
+  SEPERATION OF CONCERNS
+  SINGLE SOURCE OF TRUTH
+
+  Instead of creating the initialState as an object and passing in createStore directly, we'll not paas it directly.
+  We will make sure that it becomes the responsibility of the reducer to initialize the state instead of the library.
+  
+
+*/

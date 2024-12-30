@@ -1,8 +1,11 @@
 import createStore from "./library/createStore";
 
+/*  ACTION TYPES START  */
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
 export const CHANGE_FILTER_STATUS = "CHANGE_FILTER_STATUS";
+/*  ACTION TYPES END  */
 
+/*  ACTION CREATERS START HERE  */
 export function changeFilterStatus(newStatus) {
   return {
     type: CHANGE_FILTER_STATUS,
@@ -19,6 +22,8 @@ export function toggleDarkMode() {
 // responsibility of creating an action object now lies with these above function
 // which we can now import in all our other components
 //  known as action creaters
+
+/*  ACTION TYPES END  */
 
 const initialState = {
   isDarkMode: false,
@@ -66,7 +71,15 @@ Reducer :
   should be reurn { ...state, isDarkMode: !state.isDarkMode } //  immutability
 */
 
-const reducer = (state, action) => {
+// const reducer = (state, action) => {
+const reducer = (
+  state = {
+    isDarkMode: false,
+    filterStatus: "active",
+    // filterStatus: "all",
+  },
+  action
+) => {
   switch (action.type) {
     // case "TOGGLE_DARK_MODE":
     case TOGGLE_DARK_MODE:
@@ -87,13 +100,16 @@ const reducer = (state, action) => {
         filterStatus: action.payload,
       };
     default:
+      console.log("default case executed");
       return state;
   }
 };
 
 // const store = createStore(initialState, toggleDarkMode);
-const store = createStore(initialState, reducer);
+// const store = createStore(initialState, reducer);
+const store = createStore(reducer);
 
+/*
 // ===========================================================================
 // Test : Act, Assert, Expect
 
@@ -120,7 +136,7 @@ if (JSON.stringify(expected) != JSON.stringify(actual)) {
   console.log("Test passed for TOGGLE_DARK_MODE");
 }
 // ===========================================================================
-
+*/
 export default store;
 
 /*

@@ -1,6 +1,8 @@
 // const createStore = (initialState, handler) => {
-const createStore = (initialState, reducer) => {
-  let state = initialState;
+// const createStore = (initialState, reducer) => {
+const createStore = (reducer) => {
+  // let state = initialState;
+  let state;
 
   const subscribers = [];
 
@@ -35,8 +37,10 @@ const createStore = (initialState, reducer) => {
   //   }
   // };
 
+  //  idea of dispatch is to be invoked such that a new value is assigned to the state
   const dispatch = (action) => {
     const prevState = state;
+    //  assigning the new value to the state
     state = reducer(state, action);
     console.log("Invoked Dispatch");
 
@@ -45,6 +49,16 @@ const createStore = (initialState, reducer) => {
       subscribers.forEach((callback) => callback());
     }
   };
+
+  //  here action is an empty object being passed
+  //  so here, during the call of reducer function inside dispatch, reducer will not receive any arguments for the state, so that reducer will receive it as undefined.
+  //  But in the reducer function declaration, if we don't pass any arguments, it will take a default state as mentioned in the reducer function
+
+  //  the action.type is undefined in the reducer function so default case will be executed inside
+  //  reducer function and the state will be initialized to initialState from the reducer function
+  //  so, the responsibility of initializing the state lies with the reducer function now instead of the todoStore/createStore
+
+  dispatch({});
 
   const subscribe = (callback) => {
     subscribers.push(callback);
