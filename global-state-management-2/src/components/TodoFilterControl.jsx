@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import store from "../todoStore";
+import store, { CHANGE_FILTER_STATUS } from "../todoStore";
 
 let statuses = [
   { id: "all", title: "All" },
@@ -21,7 +21,9 @@ const TodoFilterControl = () => {
     //  payload is absolutely optional, if we need to paas some additional information then we paas it in payload
     //  payload can be anything : it can be number, string, boolean, object, etc....
     store.dispatch({
-      type: "CHANGE_FILTER_STATUS",
+      // type: "CHANGE_FILTER_STATUS",
+      // type: "CHANGE_FILLER_STATUS",
+      type: CHANGE_FILTER_STATUS,
       payload: {
         filterStatus: newStatus,
       },

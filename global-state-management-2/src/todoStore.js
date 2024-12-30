@@ -1,5 +1,8 @@
 import createStore from "./library/createStore";
 
+export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+export const CHANGE_FILTER_STATUS = "CHANGE_FILTER_STATUS";
+
 const initialState = {
   isDarkMode: false,
   filterStatus: "active",
@@ -48,13 +51,15 @@ Reducer :
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "TOGGLE_DARK_MODE":
+    // case "TOGGLE_DARK_MODE":
+    case TOGGLE_DARK_MODE:
       // state.isDarkMode = !state.isDarkMode;
       return {
         ...state,
         isDarkMode: !state.isDarkMode,
       };
-    case "CHANGE_FILTER_STATUS":
+    // case "CHANGE_FILTER_STATUS":
+    case CHANGE_FILTER_STATUS:
       // state.filterStatus = action.payload.filterStatus;
       return {
         ...state,

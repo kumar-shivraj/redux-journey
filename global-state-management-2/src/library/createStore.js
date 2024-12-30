@@ -41,6 +41,7 @@ const createStore = (initialState, reducer) => {
     console.log("Invoked Dispatch");
 
     if (prevState !== state) {
+      console.log("About to call subscriber function");
       subscribers.forEach((callback) => callback());
     }
   };
