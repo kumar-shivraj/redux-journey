@@ -63,3 +63,14 @@ createRoot(document.getElementById("root")).render(
 
 
 */
+
+/*
+
+  Let's talk about performance
+
+  //  Identify the problem here ?? --> Avoiding calling all the subscribers function on every dispatch call
+  //  What is the solution // How do we optimize ?
+
+
+
+*/

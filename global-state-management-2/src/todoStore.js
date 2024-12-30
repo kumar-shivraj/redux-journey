@@ -12,7 +12,14 @@ const initialState = {
 //   // console.log(state.isDarkMode);
 // };
 
+/*
+
+reducer performance issue can be solved by using slices
+we can use multiple reducers instead of one reducer
+
+*/
 // const reducer = (state, actionType) => {
+/*
 const reducer = (state, action) => {
   //  to call the relevant handler from inside
   //  if both button is doing certain responsibility
@@ -31,6 +38,33 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
+*/
+/*
+Reducer : 
+  SLICE =>  start breaking down the reducer : O(1)
+  should be reurn { ...state, isDarkMode: !state.isDarkMode } //  immutability
+*/
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "TOGGLE_DARK_MODE":
+      // state.isDarkMode = !state.isDarkMode;
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode,
+      };
+    case "CHANGE_FILTER_STATUS":
+      // state.filterStatus = action.payload.filterStatus;
+      return {
+        ...state,
+        filterStatus: action.payload.filterStatus,
+      };
+    default:
+      return state;
+  }
+};
+
 // const store = createStore(initialState, toggleDarkMode);
 const store = createStore(initialState, reducer);
 
@@ -42,7 +76,7 @@ const tempInitialState = {
   filterStatus: "active",
 };
 
-const tempStore = createStore(tempInitialState, reducer);
+// const tempStore = createStore(tempInitialState, reducer);
 
 let action = { type: "TOGGLE_DARK_MODE" };
 
@@ -66,5 +100,6 @@ export default store;
 /*
   Hypothesis : If our reducer is actually "impure", now if I try to write  a test for it, then that test should fail
 
+  MUTATION : CHANGE
 
 */
