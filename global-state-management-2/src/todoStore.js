@@ -1,67 +1,71 @@
 import createStore from "./library/createStore";
-import combineReducers from "./library/combineReducers";
+// import combineReducers from "./library/combineReducers";
+import rootReducer from "./reducers";
 
-/*  ACTION TYPES START  */
-export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-export const CHANGE_FILTER_STATUS = "CHANGE_FILTER_STATUS";
-/*  ACTION TYPES END  */
+//  AGENDA : We want to cleanup todoStore.js file & move the pices into relevant files and folders
+// to ensure readability & a more scalable codebase
 
-/*  ACTION CREATERS START HERE  */
-export function changeFilterStatus(newStatus) {
-  return {
-    type: CHANGE_FILTER_STATUS,
-    payload: newStatus,
-  };
-}
+// /*  ACTION TYPES START  */
+// export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+// export const CHANGE_FILTER_STATUS = "CHANGE_FILTER_STATUS";
+// /*  ACTION TYPES END  */
 
-export function toggleDarkMode() {
-  return {
-    type: TOGGLE_DARK_MODE,
-  };
-}
+// /*  ACTION CREATERS START HERE  */
+// export function changeFilterStatus(newStatus) {
+//   return {
+//     type: CHANGE_FILTER_STATUS,
+//     payload: newStatus,
+//   };
+// }
 
-//  responsibility of creating an action object now lies with these above function
-//  which we can now import in all our other components
-//  known as action creaters
+// export function toggleDarkMode() {
+//   return {
+//     type: TOGGLE_DARK_MODE,
+//   };
+// }
 
-/*  ACTION TYPES END  */
+// //  responsibility of creating an action object now lies with these above function
+// //  which we can now import in all our other components
+// //  known as action creaters
+
+// /*  ACTION CREATERS END  */
 
 /*  PREFERENCES REDUCER  */
-function preferencesReducer(
-  state = {
-    isDarkMode: true,
-    // isDarkMode: false,
-  },
-  action
-) {
-  switch (action.type) {
-    case TOGGLE_DARK_MODE:
-      return {
-        ...state,
-        isDarkMode: !state.isDarkMode,
-      };
-    default:
-      return state;
-  }
-}
+// function preferencesReducer(
+//   state = {
+//     isDarkMode: true,
+//     // isDarkMode: false,
+//   },
+//   action
+// ) {
+//   switch (action.type) {
+//     case TOGGLE_DARK_MODE:
+//       return {
+//         ...state,
+//         isDarkMode: !state.isDarkMode,
+//       };
+//     default:
+//       return state;
+//   }
+// }
 
 /*  TODO REDUCER  */
-function todoReducer(
-  state = {
-    filterStatus: "active",
-  },
-  action
-) {
-  switch (action.type) {
-    case CHANGE_FILTER_STATUS:
-      return {
-        ...state,
-        filterStatus: action.payload,
-      };
-    default:
-      return state;
-  }
-}
+// function todoReducer(
+//   state = {
+//     filterStatus: "active",
+//   },
+//   action
+// ) {
+//   switch (action.type) {
+//     case CHANGE_FILTER_STATUS:
+//       return {
+//         ...state,
+//         filterStatus: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// }
 
 /*
 const initialState = {
@@ -156,16 +160,17 @@ const reducer = (
 //  mapping : (map => hash map) : a key value pair
 
 //  this key is nothing but representing a "slice" of state
-const reducerMappings = {
-  preferencesReducer: preferencesReducer, //  slice for preferences
-  todoReducer: todoReducer, //  slice for todos
-};
+// const reducerMappings = {
+//   preferencesReducer: preferencesReducer, //  slice for preferences
+//   todoReducer: todoReducer, //  slice for todos
+// };
 // console.log("Reducer Mappings : ", reducerMappings);
 
 //  combineReducer is returning a function named as combinedReducer
 //  combineReducer ==> function ==> combinedRedcer
 //  combinedReducer ==> function accept state and action : combinedReducer(state, action)
-const store = createStore(combineReducers(reducerMappings));
+// const store = createStore(combineReducers(reducerMappings));
+const store = createStore(rootReducer);
 
 /*
 // ===========================================================================

@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import SwitchToDarkIcon from "../images/icon-moon.svg";
 import SwitchToLightIcon from "../images/icon-sun.svg";
 // import store, { TOGGLE_DARK_MODE, toggleDarkMode } from "../todoStore";
-import store, { toggleDarkMode } from "../todoStore";
+// import store, { toggleDarkMode } from "../todoStore";
+import store from "../todoStore";
+import { toggleDarkMode } from "../actions";
 
 const Header = () => {
   // const isDarkMode = store.getState().isDarkMode;

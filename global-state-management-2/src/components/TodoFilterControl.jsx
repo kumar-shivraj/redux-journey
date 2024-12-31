@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 // import store, { CHANGE_FILTER_STATUS, changeFilterStatus } from "../todoStore";
-import store, { changeFilterStatus } from "../todoStore";
+// import store, { changeFilterStatus } from "../todoStore";
+import store from "../todoStore";
+import { changeFilterStatus } from "../actions";
 
 let statuses = [
   { id: "all", title: "All" },
@@ -35,6 +37,8 @@ const TodoFilterControl = () => {
     });
 
     */
+    // store.dispatch(CHANGE_FILTER_STATUS(newStatus));
+    // store.dispatch(changeFilterStatus(newStatus));
     store.dispatch(changeFilterStatus(newStatus));
   };
 
