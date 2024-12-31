@@ -1,4 +1,5 @@
-import createStore from "./library/createStore";
+// import createStore from "./library/createStore";
+import { createStore } from "redux";
 // import { TOGGLE_DARK_MODE, CHANGE_FILTER_STATUS } from "./actions/types";
 import { rootReducer } from "./reducers";
 
@@ -41,7 +42,7 @@ import { rootReducer } from "./reducers";
 //       default:
 //         console.log('default case executed');
 //         break;
-//     }  
+//     }
 // }
 
 // const preferencesReducer = (state = {  isDarkMode: false }, action) => {
@@ -64,7 +65,7 @@ import { rootReducer } from "./reducers";
 
 // const combineReducers = (reducerMappings) => {
 //   const initialState = {}
- 
+
 //   Object.keys(reducerMappings).forEach(id => initialState[id] = undefined)
 //   console.log(initialState)
 
@@ -86,9 +87,9 @@ import { rootReducer } from "./reducers";
 //   "preferencesReducer": preferencesReducer,
 //   "todoReducer": todoReducer
 // })
-  
+
 const store = createStore(/*initialState,*/ rootReducer);
-  
+console.log("store : ", store);
 // const store = createStore(initialState, toggleDarkMode);
 
 /*
