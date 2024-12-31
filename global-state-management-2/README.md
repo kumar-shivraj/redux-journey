@@ -57,11 +57,22 @@ A simple and efficient Todo Application built using React and Redux concepts(wit
    ```
 
 2. Install Dependencies
-   - `npm install`
+
+   ```
+   npm install
+   ```
+
 3. Run the Application
-   - `npm run dev`
-4. Open in Browser
-   - Visit `http://localhost:5173` to view the app.
+
+   ```
+   npm run dev
+   ```
+
+4. Open in Browser, Visit below url to view the app :
+
+   ```
+   http://localhost:5173
+   ```
 
 ## Core Concepts
 
@@ -98,9 +109,3 @@ This application's global state management started from humble beginnings.
 - `TodoListItem`: Represents a single todo item.
 - `TodoMenu`: Provides a count of remaining todos and filter options.
 - `TodoWrapper`: Combines the input and list components.
-
-## Future Improvements
-
-- Add support for editing and deleting todos.
-- Persist todos and theme settings using local storage or a backend API.
-- Improve UI/UX with animations and additional styling.
