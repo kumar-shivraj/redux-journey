@@ -33,3 +33,21 @@ createRoot(document.getElementById("root")).render(
               =>  React-Redux is a UI binding for redux when it comes to React.
 
 */
+
+/*
+  Hooks ? 
+  Custom Hooks ?? --> Hooks that we create ourselves
+                  --> It is created by React-Redux library as well
+
+  useDispatch(), useSelector()  =>  provided by react-redux.
+
+
+  Why is it provided by React-Redux ? not by redux only ? 
+    =>  Redux is the general implementation of the global state management
+    =>  And We are building React Application. And binding we are using for these two is React-Redux
+    =>  Inside these hooks, they internally using the redux stuffs.
+    =>  Hook is concept of React, not Redux.
+
+    // Therefore, these hooks are provided by React-Redux
+
+*/

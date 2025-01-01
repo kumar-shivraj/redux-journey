@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import store  from "../todoStore";
+// import React, { useState, useEffect } from "react";
+import { useState } from "react";
+// import store from "../todoStore";
+import { useSelector } from "react-redux";
 
 const getCurrentDate = () => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(currentDate.getDate()).padStart(2, '0');
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  const day = String(currentDate.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
 
@@ -14,8 +16,19 @@ const TodoInput = (/*{ isDarkMode }*/) => {
   const [dueDate, setDueDate] = useState(getCurrentDate());
 
   // const isDarkMode = store.getState().preferencesReducer.isDarkMode;
-  const [isDarkMode, setIsDarkMode] = useState(store.getState().preferencesReducer.isDarkMode); 
-  
+  // const [isDarkMode, setIsDarkMode] = useState(
+  //   store.getState().preferencesReducer.isDarkMode
+  // );
+  // useEffect(() => {
+  //   store.subscribe(() => {
+  //     setIsDarkMode(store.getState().preferencesReducer.isDarkMode);
+  //   });
+  // }, []);
+
+  const isDarkMode = useSelector(
+    (state) => state.preferencesReducer.isDarkMode
+  );
+
   const handleTodoTitleChange = (e) => {
     setTodoTitle(e.target.value);
   };
@@ -23,12 +36,6 @@ const TodoInput = (/*{ isDarkMode }*/) => {
   const handleDueDateChange = (e) => {
     setDueDate(e.target.value);
   };
-
-  useEffect(() => {
-    store.subscribe(() => {
-      setIsDarkMode(store.getState().preferencesReducer.isDarkMode);
-    });
-  }, []);
 
   return (
     <div className={`form-control  ${isDarkMode && "form-control-dark"}`}>
