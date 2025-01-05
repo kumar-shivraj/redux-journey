@@ -1,7 +1,8 @@
 // import React from "react";
 // import { useState, useEffect } from "react";
 // import store from "../todoStore";
-import { changeFilterStatus } from "../actions";
+// import { changeFilterStatus } from "../actions";
+import { changeFilterStatus } from "../slices/todoSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 

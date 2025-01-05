@@ -12,4 +12,7 @@ const todoSlice = createSlice({
   },
 });
 
+console.log("todo slice : ", todoSlice);
+// we need to export the actions as well in order to dispatch that
+export const { changeFilterStatus } = todoSlice.actions;
 export default todoSlice.reducer;

@@ -31,5 +31,7 @@ const preferencesSlice = createSlice({
     reducer
     caseReducers
 */
+// we need to export the actions as well in order to dispatch that
+export const { toggleDarkMode } = preferencesSlice.actions;
 // Technically, we don't need the entire slice, instead export only reducers.
 export default preferencesSlice.reducer;
