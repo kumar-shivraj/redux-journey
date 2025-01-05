@@ -12,7 +12,8 @@ const TodoList = () => {
   const [filteredTodos, setFilteredTodos] = useState([]);
 
   // eslint-disable-next-line no-unused-vars
-  const [todos, setTodos] = useState(data);
+  // const [todos, setTodos] = useState(data);
+  const todos = useSelector((state) => state.todoReducer.todos);
 
   const isDarkMode = useSelector(
     (state) => state.preferencesReducer.isDarkMode
@@ -21,6 +22,7 @@ const TodoList = () => {
 
   useEffect(() => {
     const handleFilterTodos = (todos, filterStatus) => {
+      console.log("Before filtering, filteredTodos : ", filteredTodos);
       switch (filterStatus) {
         case "active":
           setFilteredTodos(todos.filter((todo) => !todo.completed));
@@ -32,10 +34,15 @@ const TodoList = () => {
           setFilteredTodos([...todos]);
           break;
       }
+      // console.log("After filtering, filteredTodos : ", filteredTodos);
+      console.log("After filtering, filteredTodos : ", todos);
     };
 
+    // handleFilterTodos(todos, filterStatus);
     handleFilterTodos(todos, filterStatus);
-  }, [filterStatus]);
+  }, [filterStatus, todos]);
+
+  console.log("parent : Inside useEffect of TodoMenu, todos : ", todos);
 
   return (
     <>

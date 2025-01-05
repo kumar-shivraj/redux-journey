@@ -7,6 +7,7 @@ const TodoMenu = ({ todos }) => {
   const [leftTodoCount, setLeftTodoCount] = useState(0);
 
   useEffect(() => {
+    console.log("Inside useEffect of TodoMenu, todos : ", todos);
     const unCompletedTodos = todos.filter((todo) => !todo.completed);
     setLeftTodoCount(unCompletedTodos.length);
   }, [todos]);
