@@ -12,4 +12,4 @@ const todoSlice = createSlice({
   },
 });
 
-export default todoSlice;
+export default todoSlice.reducer;

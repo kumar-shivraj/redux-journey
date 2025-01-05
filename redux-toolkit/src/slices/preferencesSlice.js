@@ -23,4 +23,13 @@ const preferencesSlice = createSlice({
   },
 });
 
-export default preferencesSlice;
+/*
+  If you see the log, you will see slice is returning multiple things,
+  below is the few things it's returning
+    actions
+    getInitialState
+    reducer
+    caseReducers
+*/
+// Technically, we don't need the entire slice, instead export only reducers.
+export default preferencesSlice.reducer;
