@@ -25,7 +25,7 @@ const TodoFilterControl = () => {
                     <button
                         id={status.id}
                         className={filterStatus === status.id ? "btn active" : "btn"}
-                        onClick={() => dispatch(changeFilterStatus(status.idd))}
+                        onClick={() => dispatch(changeFilterStatus(status.id))}
                         key={idx}
                     >
                         {status.title}
